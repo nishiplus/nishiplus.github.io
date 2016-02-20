@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo Agency Theme</title>
+    <title>Title Here</title>
     <link>http://nishiplus.github.io/</link>
-    <description>Recent content on Hugo Agency Theme</description>
+    <description>Recent content on Title Here</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <atom:link href="http://nishiplus.github.io/index.xml" rel="self" type="application/rss+xml" />
