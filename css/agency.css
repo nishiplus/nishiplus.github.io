@@ -730,7 +730,7 @@ body {
 }
 .cont {
 	display: inline-block;
-	max-width: 550px;
+	max-width: 650px;
 	min-width: 10px;
 	margin: 0 auto;
 	line-height: 1.75;
@@ -756,6 +756,13 @@ text-align: center;
 }
 textarea {
 	resize: none;
+}
+#team{
+display: none;
+}
+#temp{
+	background-color: aliceblue;
+
 }
 
 
