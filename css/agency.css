@@ -7,6 +7,8 @@ body {
 }
 .text-primary {
 	color: #16a085;
+
+
 }
 p {
 	font-size: 14px;
@@ -728,17 +730,25 @@ img::-moz-selection {
 body {
 	webkit-tap-highlight-color: #fed136;
 }
+.material-icons{
+vertical-align: middle;
+	color: #16a085;
+}
 .cont {
 	display: inline-block;
-	max-width: 650px;
+	max-width: 900px;
 	min-width: 10px;
 	margin: 0 auto;
+	margin-top: 0px;
 	line-height: 1.75;
 	color: #777;
-	text-align: left;
+	font-size: 24px;
+font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
 	padding-left: calc(20% - 50px);
 	padding-right: calc(20% - 50px);
 	padding-bottom: 50px;
+
 }
 .cont2{
 margin-left: 84px;
@@ -746,6 +756,8 @@ margin-left: 84px;
 .wholecont {
 	display: block;
 	text-align: center;
+	margin-top: -50px;
+
 }
 .frstbutt{
 visibility: hidden;
