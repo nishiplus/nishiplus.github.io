@@ -9,6 +9,8 @@
 	<meta name="author" content="Your name">
 	<meta name="generator" content="Hugo 0.15" />
 	<title>VElate</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<!-- Bootstrap Core CSS -->
 	<link href="http://velate.in/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom CSS -->
@@ -19,13 +21,114 @@
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css">
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+	<script>
+		window.noti_live_count = 0;
+		$.ajax({
+			url: 'https://spreadsheets.google.com/feeds/cells/1taop3JTp-Tb3XPSkKWeUyNtSfWoCABHmbWZvzxi8JqI/od6/public/basic?alt=json',
+			type: 'get',
+			dataType: 'jsonp',
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log('Problem with call to get list of articles\n', errorThrown);
+			},
+			success: function(oxo) {
+				console.log('call success, data is\n', oxo);
+				$.each(oxo.feed.entry, function(i, f) {
+					var tblRow = "<div class='infor'>" + oxo.feed.entry[i].content.$t + "</div>" + "<br>"
+					noti_live_count = i;
+					console.log('noti live count is', noti_live_count);
+					$(tblRow).prependTo(".notiwhole");
+				});
+			}
+		});
+
+	</script>
+
+	<script>
+		$.ajax({
+			url: 'https://spreadsheets.google.com/feeds/cells/19ITt6YbXC9S2pzQ5zFAGfNML3xCjcXjD0nRm4BPIkFY/od6/public/basic?alt=json',
+
+			type: 'get',
+			dataType: 'jsonp',
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log('Problem with call to get list of articles\n', errorThrown);
+			},
+			success: function(oxo) {
+				console.log('call success, data is\n', oxo.feed.entry.length);
+
+
+				$.each(oxo.feed.entry, function(i, f) {
+
+
+
+					if (i == 1 || i % 2 == 1) {
+						return true;
+					}
+
+
+					var tblRow = "<div class='notipost'>" +
+						"<span class='posttit'>" + f.content.$t + "</span>" +
+						"<hr>" +
+						"<span class='posttxt'>" + oxo.feed.entry[i + 1].content.$t + "</span>" +
+						"</div>"
+					$(tblRow).appendTo(".notiblog");
+				});
+			}
+		});
+
+	</script>
 	<style>
+		.notiwhole {
+			max-width: 500px;
+			min-width: 400px;
+			text-align: center;
+			margin: 0 auto;
+			padding-left: 10px;
+		}
+
+		.infor {
+			text-align: left;
+			color: #ecf0f1;
+			font-size: 18px;
+			font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+
+		.notiblog {
+			width: 100%;
+			text-align: center;
+		}
+
+		.posttit {
+			color: aliceblue;
+			text-align: center;
+			font-size: 20px;
+			font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+
+		.posttxt {
+			color: azure;
+			font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+			text-align: center;
+		}
+
+		.notipost {
+			display: inline-block;
+			max-width: 400px;
+			padding-left: 20px;
+			padding-right: 20px;
+			min-width: 400px;
+			padding-bottom: 50px;
+			font-size: 14px;
+			font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+
 		body {
 			background: #43cea2;
 			/* fallback for old browsers */
@@ -44,7 +147,7 @@
 
 <body id="page-top" class="index">
 	<!-- Navigation -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#333;">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header page-scroll">
@@ -87,6 +190,10 @@
 						<a class="page-scroll" href="http://velate.in/utile.html">Utile</a>
 					</li>
 
+					<li>
+					<a class="page-scroll" href="https://script.google.com/macros/s/AKfycbwK951SlLcEIO7tQCWkT2-dymDCrLzZGN_Bsrej0XxLtt5fEPgP/exec" target="_blank">Resume-Upload</a>
+				</li>
+
 
 					<li>
 						<a class="page-scroll" href="http://velate.in#contact">Contact</a>
@@ -106,16 +213,49 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 style="color:#fff" class="section-heading">Utile</h2>
-					<h3 style="color:#fff;" class="section-subheading text-muted">All Helpful Links</h3>
+					<h2 style="color:#fff" class="section-heading">Information</h2>
+					<br>
+
 				</div>
 			</div>
+		</div>
+		<div class="notiwhole">
+
+
 
 
 
 		</div>
-		<center> <a style="color:#fff" href="https://script.google.com/macros/s/AKfycbwzKvNFlELcQ5MCu_0CqVJE_Md_R7zAohuxxTWVONq-VZ6PFg/exec">[ Upload Resume ]</a></center>
+
 	</section>
+
+
+	<section style="color:#fff;margin-top:0px;" id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 style="color:#fff" class="section-heading">Blog</h2>
+					<br>
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</section>
+	<div class="notiblog">
+
+
+
+
+
+
+
+
+
+	</div>
 
 
 
