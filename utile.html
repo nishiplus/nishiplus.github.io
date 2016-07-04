@@ -9,11 +9,15 @@
 	<meta name="author" content="Your name">
 	<meta name="generator" content="Hugo 0.15" />
 	<title>VElate</title>
+		<link rel="stylesheet" href="css/materialize.css">
+
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
 	<!-- Bootstrap Core CSS -->
 	<link href="http://velate.in/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom CSS -->
+
 	<link href="http://velate.in/css/agency.css" rel="stylesheet">
 	<!-- Custom Fonts -->
 	<link href="http://velate.in/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -41,7 +45,7 @@
 			success: function(oxo) {
 				console.log('call success, data is\n', oxo);
 				$.each(oxo.feed.entry, function(i, f) {
-					var tblRow = "<div class='infor'>" + oxo.feed.entry[i].content.$t + "</div>" + "<br>"
+					var tblRow = "<blockquote><div class='infor'>" + oxo.feed.entry[i].content.$t + "</div></blockquote>" + "<br>"
 					noti_live_count = i;
 					console.log('noti live count is', noti_live_count);
 					$(tblRow).prependTo(".notiwhole");
@@ -73,11 +77,18 @@
 					}
 
 
-					var tblRow = "<div class='notipost'>" +
-						"<span class='posttit'>" + f.content.$t + "</span>" +
-						"<hr>" +
-						"<span class='posttxt'>" + oxo.feed.entry[i + 1].content.$t + "</span>" +
-						"</div>"
+					var tblRow = "<div class='col s8'>"+
+		  "<div  class='card '>"+
+			"<div class='card-content white-text'>"+
+			 " <span style='color:#444' class='card-title'>" + f.content.$t + "</span><hr>"+
+			 " <p style='color:#444;font-size:17px;'>" + oxo.feed.entry[i + 1].content.$t + "</p>"+
+			"</div>"+
+
+		 " </div>"+
+		"</div><br>"
+
+
+
 					$(tblRow).appendTo(".notiblog");
 				});
 			}
@@ -96,12 +107,12 @@
 		.infor {
 			text-align: left;
 			color: #ecf0f1;
-			font-size: 18px;
+			font-size: 16px;
 			font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		}
 
 		.notiblog {
-			width: 100%;
+
 			text-align: center;
 		}
 
@@ -235,8 +246,6 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 style="color:#fff" class="section-heading">Blog</h2>
-					<br>
-
 				</div>
 			</div>
 		</div>
@@ -245,6 +254,9 @@
 
 
 	</section>
+<div class="container">
+		<!-- Page Content goes here -->
+
 	<div class="notiblog">
 
 
@@ -255,7 +267,10 @@
 
 
 
+
+
 	</div>
+	 </div>
 
 
 
